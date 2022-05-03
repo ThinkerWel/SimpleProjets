@@ -1,0 +1,97 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+
+#define CANDIDANT_1 "Kate"
+#define CANDIDANT_2 "Aleks"
+#define CANDIDANT_3 "Tommy"
+#define CANDIDANT_4 "Leonardo"
+
+int cand_1 = 0, cand_2 = 0, cand_3 = 0, cand_4 = 0;
+
+void FunctRecordAndChooise(void)
+{
+
+	printf("\n%s", CANDIDANT_1);
+	printf("\n%s", CANDIDANT_2);
+	printf("\n%s", CANDIDANT_3);
+	printf("\n%s", CANDIDANT_4);
+	
+	printf("\n\n Enter one choise :");
+	int choice = 0;
+	scanf("%d", &choice);
+
+	switch (choice)
+	{
+	case 1: cand_1++;
+		break;
+
+	case 2: cand_2++;
+		break;
+	
+	case 3: cand_3++;
+		break;
+
+	case 4: cand_4++;
+		break;
+	}
+}
+
+void Conclusion(void)
+{
+	printf("voices - [%d] - %s\n ", cand_1, CANDIDANT_1);
+	printf("voices - [%d] - %s\n ", cand_2, CANDIDANT_1);
+	printf("voices - [%d] - %s\n ", cand_3, CANDIDANT_1);
+	printf("voices - [%d] - %s\n ", cand_4, CANDIDANT_1);
+}
+
+void Comparison(void)
+{
+	if (cand_1 > cand_2 && cand_2 > cand_3 && cand_3 > cand_4)
+		printf("%s\n", CANDIDANT_1);
+
+	else if (cand_2 > cand_3 && cand_2 > cand_4 && cand_3 > cand_1)
+		printf("%s\n", CANDIDANT_2);
+
+	else if (cand_3 > cand_4 && cand_3 > cand_2 && cand_3 > cand_1)
+		printf("%s\n ", CANDIDANT_3);
+
+	else if (cand_4 > cand_1 && cand_4 > cand_2 && cand_4 > cand_3)
+		printf("%s\n", CANDIDANT_4);
+
+}
+
+
+int main(void)
+{
+	int choice = 0;
+
+	do {
+		printf("\n***************");
+		printf("\n1)Cast the vote \n");
+		printf("2)Find vote count\n");
+		printf("3)Find leading\n");
+		printf("4)Exit\n");
+		printf("****************\n\n");
+
+		printf("\nEnter righ one function  :");
+		scanf("%d", &choice);
+
+		switch (choice)
+		{
+		case 1:FunctRecordAndChooise();
+			break;
+
+		case 2:Conclusion();
+			break;
+
+		case 3:Comparison();
+			break;
+
+		default:
+			printf("Not such function !");
+			exit(1);
+		}
+	} while (choice != 0);
+	return 0;
+}
