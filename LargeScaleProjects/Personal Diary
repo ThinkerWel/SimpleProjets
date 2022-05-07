@@ -1,0 +1,281 @@
+ #define _CRT_SECURE_NO_WARNINGS
+#pragma warning(disable : 4996) .
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>  
+#include <string.h>
+#include <ctype.h>
+
+int Password();
+
+struct perfect
+{
+char place[29];
+char name[29];
+char time[29];
+
+// будем содержать  информацию о встречах с людьми,в 
+//определенных местах и в определенное время с определенным человеком
+
+}list[4];
+
+
+struct olove {
+	char pass[50];
+	char taks[100];
+	char persSecret[100];
+	// содержит пароли,задачи на день,личные секреты
+
+}diary[4];
+
+FILE* fp;
+FILE* ft;
+FILE* open;
+
+void Record(void)
+{
+	system("cls");
+
+	int i = 0;
+
+	printf("\n\t\tPlace -> ");
+
+	for (i = 0; i < 2; i++) {
+		scanf("%s", &list[i].place);
+	}
+
+	for (i = 0; i < 1; i++) {
+		fprintf(fp, "Place - %s\n", list[i].place);
+	}
+
+	printf("\n\t\tName -> ");
+
+	for (i = 0; i <1; i++) {
+		scanf("%s ", &list[i].name);
+
+	}
+	for (i = 0; i < 1; i++) {
+		fprintf(fp, "Name - %s\n", list[i].name);
+	}
+
+	printf("\n\t\tTime -> ");
+	
+	for (i = 0; i < 1; i++) {
+		scanf("%s", &list[i].time);
+	}
+
+		for (i = 0; i < 1; i++) {
+			fprintf(fp, "Time - %s\n ", list[i].time);
+		}
+		printf("\nThe information recorded and saved in the diary \n");
+			
+}
+
+void PersonalRecord()
+{
+	system("cls");
+	int i = 0;
+
+	printf("\n\t\tPass ->");
+	for (i = 0; i < 1; i++) {
+		scanf("%s", diary[i].pass);
+	}
+	for (i = 0; i < 1; i++) {
+		fprintf(ft, "Password - %s\n", diary[i].pass);
+	}
+
+	printf("\n\t\tTaks -> ");
+
+	for (i = 0; i < 3; i++) {
+		scanf("%s", diary[i].taks);
+	}
+
+	for (i = 0; i < 1; i++) {
+		fprintf(ft, "Taks - %s\n ", diary[i].taks);
+	}
+
+
+	printf("\n\t\tPersSecre - > ");
+	for (i = 0; i < 3; i++) {
+		scanf("%s", diary[i].persSecret);
+	}
+
+	for (i = 0; i < 1; i++) {
+		fprintf(ft, "Secret - %s\n", diary[i].persSecret);
+	}
+
+	printf("\n\t\t Information successfully recorded ");
+}
+
+void PersonalDisplayRecord()
+{
+	system("cls");
+	printf("\n\n\t\tTo get information about diary\n,enter password -> ");
+
+	char ound = Password();
+
+	printf("\nA diary that stores information, passwords,tasks for the day, personal secrets");
+	printf("\n===============================================================================");
+
+	int i = 0;
+	fread(&diary, sizeof(diary), 1, ft);
+
+	for (i = 0; i < 1; i++) {
+		printf("\n%s %s %s", diary[i].pass, diary[i].taks, diary[i].persSecret);
+	
+	}
+	printf("\n===============================================================================");
+}
+
+void Display(void)
+{
+
+	printf("\n\n\t\tTo get information about diary,Enter password -> :  ");
+	char lokey = Password();
+	
+
+	printf("\n A diary that stores information about "
+		"business meetings with people at a certain time\n");
+
+	printf("\n=========================================================================================");
+
+	int i = 0;;
+	fread(&list, sizeof(list), 1, fp);
+
+
+	for (i = 0; i < 1; i++) {
+		printf("\n%s %s  %s", list[i].place, list[i].name, list[i].time);
+
+	}
+
+		printf("\n==========================================================================================");
+}
+
+int Password()
+{
+
+	char entrance[29];
+	char password[29];
+	int i = 0;
+
+	do {
+
+		scanf("%s", entrance);
+		printf("\t\tEnter password one more time for confirmation password ");
+		scanf("%s", password);
+
+		if (entrance != password)
+		{
+			printf("\n\t\t Password is wrong,Enter please try again -> ");
+		}
+
+	} while (strcmp(entrance, password) != 0);
+
+
+	return 1;
+}
+
+void DelectRecord()
+{
+	char name[29];
+	char pass[29];
+	int i = 0;
+
+	ft = fopen("temp", "ab");
+	if (ft == NULL)
+	{
+		printf("Error #1");
+		return;
+	}
+
+	open = fopen("olov", "ab");
+	if (open == NULL)
+	{
+		printf("Error #1");
+	}
+
+	printf("\n\t\tEnter the name record to be deleted :");
+	scanf("%", name);
+	for (i = 0; i < 3; i++)
+
+	while (fread(&list, sizeof(list), 1, fp) == 1)
+	{
+		if (strcmp(list[i].name, name) != 0)
+		if(strcmp(diary[i].pass,name)!=0)
+
+		fwrite(&list, sizeof(list), 1, ft);
+		fwrite(&diary, sizeof(diary),1,open);
+
+		fprintf(ft, "%s", list[i].name);
+		fprintf(open, "%s", diary[i].pass);
+		
+	}
+	fclose(fp);
+	fclose(ft);
+	remove("Respect.h");
+	rename("temp", "Respect.h");
+
+	fclose(ft);
+	fclose(open);
+
+	remove("Personal.h");
+	rename("olov", "Personal.h");
+
+}
+
+int main(void)
+{
+	system("color 1F");
+	int d = 0;
+	int ch = 0;
+
+	do{
+		printf("\n\t\t\t\t ***** Personal protected diary ***** \n");
+		printf("\n\t\t1)Add Record for meetings ");
+		printf("\n\t\t2)Add Personal Information");
+		printf("\n\t\t3)DisplayRecord");
+
+		printf("\n\t\t4)DisplayPersona");
+		printf("\n\t\t5)DelectRecord");
+		printf("\n\t\t6)Exit");
+
+		printf("\n\n\t\tEnter your choise - > ");
+		scanf("%d", &ch);
+
+		
+			switch (ch)
+			{
+			case 1:
+				fp = fopen("Respect.h", "a");
+				Record();
+				break;
+
+			case 2:ft = fopen("Personal.h", "a");
+				PersonalRecord();
+				break;
+
+			case 3:fp = fopen("Respect.h", "r");
+				Display();
+				break;
+
+			case 4:ft = fopen("Personal.h", "r");
+				PersonalDisplayRecord();
+				break;
+
+			case 5: fp = fopen("Respect.h", "a");
+				ft = fopen("Personal.h", "a");
+				DelectRecord();
+				break;
+
+			case 6:
+				exit(1);
+				break;
+
+			default:
+				printf("Error #1");
+
+			}
+
+		} while (ch != 0);
+		return 0;
+}
