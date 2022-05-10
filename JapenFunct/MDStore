@@ -1,0 +1,372 @@
+ #define _CRT_SECURE_NO_WARNINGS
+#pragma warning(disable : 4996) .
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+#define PASSWORD "QUREL"
+
+int Password();
+
+
+struct date {
+	int year;
+	int month;
+	int day;
+};
+
+struct AllIformation {
+
+	int number;
+	char name[29];
+	char purch[29];
+
+	char addres[29];
+	long int summa;
+	char mobileTel[29];
+
+	struct date kove;
+
+}list;
+
+
+FILE* fp;
+int l = sizeof(list);
+
+
+void OpenFile(void)
+{
+	fp = fopen("ded.h", "rb");
+	if (fp == NULL) {
+		fp = fopen("aex.h", "ab");
+
+		if (fp == NULL) {
+			printf("Error #1");
+		}
+		printf("Error #2");
+	}
+
+	fwrite(&list, sizeof(list), 1, fp);
+}
+
+
+// записываем информацию о покупатели совершившом покупку в супермаркете Магнит,
+// записываем в базу данных,и выводим чек с сделаной покупкой 
+void ByuMagnit(void)
+{
+	int ExitOrContinue = 0;
+	
+	do {
+
+		printf("\n\t\tEnter the product you want to purchase :> ");
+		scanf("%s", list.purch);
+
+		if (strstr(list.purch, "Milk")) {
+				printf("\t\tThere is Such product in list \n");
+
+		}	else if(strstr(list.purch,"Bread"))	{
+			printf("\t\tThere is such product in list \n");
+
+		} 	else if (strstr(list.purch, "Meat"))	{
+			printf("\t\tThere is such product in list \n");
+
+		}	else if (strstr(list.purch, "Butter")) {
+			printf("\t\tThere is such product in list \n");
+
+		}	else if (strstr(list.purch, "Icream")) {
+			printf("\t\tThere is such product in list \n");
+
+		}	else if (strstr(list.purch, "Orange")) {
+			printf("\t\tThere is such product in list \n");
+
+		}	else if (strstr(list.purch, "Chips")) {
+			printf("\t\tThere is such product in list \n");
+
+		}else if (strstr(list.purch, "Eggs")) {
+			printf("\t\tThere is such product in list \n");
+
+		}	else if (strstr(list.purch, "Potatoetos")) {
+			printf("\t\tThere is such product in list \n");
+		}
+		else {
+			printf("\n\t\tThere is not such product in list ");
+			continue;
+		}
+
+		printf("\n\t\tEnter summa store :> ");
+		scanf("%d", &list.summa);
+	
+		
+
+		printf("\n\t\tEnter mm/yy/dd :> "); 
+		scanf("%d %d %d", &list.kove.year, &list.kove.month, &list.kove.day);
+
+		fprintf(fp, "\n\t\t****** Magnit ******\n");
+		fprintf(fp, "\nCheque : \n");
+		fprintf(fp, "\nProduct - %s\nPrice - $%d\nY/%d M/%d D/%d", list.purch, list.summa,
+			list.kove.year, list.kove.month, list.kove.day);
+
+		printf("I\n\t\t if you wand exit enter (0)  otherwise (1) :> ");
+		scanf("%d", &ExitOrContinue);
+
+	} while (ExitOrContinue == 1);
+}
+
+
+// записываем информацию о покупателе,совершивший покупку в М.Видео,и сохраняем в базе данных
+// и выводим чек с сделаной покупкой 
+void ByuMVideo(void)
+{
+		int ExitOrContinue = 0;
+
+		do {
+		//	printf("Size = %d\n", l);
+			printf("\n\n\t\tName buyer :> ");
+			scanf("%s", list.name);
+
+			printf("\n\t\tEnter purchase which want commit :> ");
+			scanf("%s", list.purch);
+			if (strstr(list.purch, "Chair")) {
+				printf("\t\tThere is such product in list \n");
+
+			}  else if (strstr(list.purch, "Carpet")) {
+				printf("\t\tThere is such product in list \n");
+
+			}	else if (strstr(list.purch, "Telephon")) {
+				printf("\t\tThere is such product in list \n");
+
+			}	else if (strstr(list.purch, "GameTable")) {
+				printf("\t\tThere is such product in list \n");
+
+			}	else if (strstr(list.purch, "Socket")) {
+				printf("\t\tThere is such product in list \n");
+
+			}  else if (strstr(list.purch, "Mouse")) {
+				printf("\t\tThere is such product in list \n");
+
+			}  else if (strstr(list.purch, "GameChair")) {
+				printf("\t\tThere is such product in list \n");
+
+			}	else if (strstr(list.purch, "Notebok")) {
+				printf("\t\tThere is such product in list \n");
+
+			}  else if (strstr(list.purch, "USB")) {
+				printf("\t\tThere is such product in list \n");
+
+			}	else if (strstr(list.purch, "Television")) {
+				printf("\t\tThere is such product in list \n");
+
+			}else {
+				printf("\t\tThere is not such product in list \n");
+				continue;
+			}
+
+			printf("\n\t\tAddres buyer :> ");
+			scanf("%s", list.addres);
+
+			printf("\n\t\tSumma :> ");
+			scanf("%d", &list.summa);
+
+			printf("\n\t\tMobileTel :> ");
+			scanf("%s", list.mobileTel);
+
+			printf("\n\t\tEnter mm/yy/dd :> ");
+			scanf("%d %d %d", &list.kove.year, &list.kove.month, &list.kove.day);
+				
+			fprintf(fp,"\n\t\t****** M.Video ******\n");
+			fprintf(fp, "\nCheque : \n");
+			fprintf(fp, "\nStore : %s\nName : %s\nAdd :  %s\nSumma :  $%d\nTel :  %s ",list.purch, list.name, list.addres,
+				list.summa, list.mobileTel);
+			fprintf(fp, "\nY/%d  M/%d  D/%d ", list.kove.year,
+				list.kove.month, list.kove.day);
+
+
+			printf("\n\t\tIf you want to write more information to the database,Enter (1/0) :"); 
+				scanf("%d", &ExitOrContinue);
+
+		} while (ExitOrContinue == 1);
+}
+
+
+void Store()
+{
+	int ch = 0;
+	printf("\n\t\tEnter store in which will be do purchase : >");
+	scanf("%d", &ch);
+
+	switch (ch)
+	{
+	case 1:
+		printf("\n\t\t\t\t ***** Store Magnit ***** \n");
+		printf("\n\t\t\t\t\t - PRODUCTS - \n");
+		printf("\n\t\t1)Milk - 12$    2)Bread - $3    3)Butter - $10    4)Joice - $3   5)Icream - $2\n");
+		printf("\n\t\t6)Eggs - $9     7)Meat - $15     8)Potatoetos - $16   9)Orange - $7   10)Chips - $22\n");
+		ByuMagnit();
+		exit(1);
+		break;
+
+	case 2:
+		printf("\n\t\t\t\t  ~~~~~~ M.Video ~~~~~~ \n");
+		printf("\n\t\t1)Television - $1100   2)Notebok - $120   3)Telephon - $160   4)USB - $10   5)Printer - $60 \n");
+		printf("\n\t\t6)Carpet - $45     7)GameChair - $90   8)GameTable - $110   9)Socket - $5  10)Mouse - $15\n");
+		ByuMVideo();
+		exit(1);
+		break;
+
+	case 3:
+		exit(1);
+		break;
+
+
+	}
+
+}
+
+
+// функция предназначена для поиска информации  о покупатели,
+//смотрит есть ли  в базе данных такой покупатель
+// будет пригодна если покупатель захочет вернуть товар
+void Search(void)
+{
+	
+	char name[20];
+	int ExitOrContinue = 0;
+
+	int pass = Password();
+
+	do {
+
+		
+		printf("\n\t\tThe name you are looking for :> ");
+		scanf("%s", name);
+
+		char* ant = NULL;
+		fread(&list, sizeof(list), 1, fp);
+	
+		ant = strstr(list.name, name);
+
+		if (ant == NULL) {
+			printf("\n\t\tString Not Found !");
+		}
+		else {
+
+			fgets(list.name, sizeof(list.name), fp);
+			printf("\n\t\tThere is such man in the DataBase !\n ");
+		}
+
+		printf("\n\t\t\If you wanted continue,enter (1/0) : ");
+		scanf("%d", &ExitOrContinue);
+	} while (ExitOrContinue == 1);
+}
+
+void Display(void)
+
+{	system("cls");
+
+	int ch = 0;
+	int i;
+	AllIformation list[12] = { 0 };
+
+	printf("\n\t\tWhich of the stores do you want to view :> ?");
+
+	printf("\n\=====================================\n");
+	fread(&list, sizeof(list), 1, fp);
+	for ( i = 0; i < 1; i++) {
+		fread(&list, sizeof(list), 1, fp);
+		printf("%s\n", list[i].name);
+		
+	}
+	printf("\n=====================================\n");
+	exit(1);
+	
+}
+
+void RemoveFile()
+{
+	printf("\n\t\tRemove File : ");
+	fclose(fp);
+	remove("ded.h");
+
+}
+
+// Функция для ввода пароля, с  помощью этой фн мы сможем просмотреть базу данных
+//Которое находится в функции Serch
+int Password()
+{
+
+	char password[29];
+	char pass[11];
+	int i = 0;
+	char c;
+
+	do {
+		printf("\n\t\tPlease Enter password for entrance : ");
+		while ((c = _getch()) != '\r') {
+			pass[i++] = c;
+			putchar('*');
+		}
+	} while (strstr(pass, PASSWORD) == NULL);
+
+	return 1;
+}
+
+
+int main(void) {
+
+	system("cls");	
+	system("color 2F");
+	int ch = 0;
+
+	do {
+		printf("\n\t============================================\n");
+		printf("\n\t\t - The client's billing system - \n\n");
+		printf("\n\t\t1: Add information about the byuer Magnit "); // записываем и сохраняем информацию о покупателе в Magnit 
+		printf("\n\t\t2: Add information about the byuer M.Video ");// записываем и сохраняем информацию о покупателе в М.Video
+		printf("\n\t\t3: Display "); // выводит чек с сделаной покупки 
+		printf("\n\t\t4: Search "); // поиск строки,проверяем есть ли данный клиент в базе данных,использовать 
+		// ее можно только  при вводе пароля 
+		printf("\n\t\t5: RemoveFile"); // удаляем файл
+		printf("\n\t\t6: Exit");// выходи 
+		printf("\n\t============================================\n");
+
+		printf("\n\n\t\tEnter chooise :> ");
+
+		scanf("%d", &ch);
+
+		switch (ch)
+		{
+		case 1:	
+			fp = fopen("ded.h", "ab");
+			Store();
+			ByuMagnit();
+			break;
+
+		case 2:fp = fopen("ded.h", "ab");
+			Store();
+			ByuMVideo();
+			break;
+
+		case 3:	OpenFile();
+			Display();
+			break;
+
+		case 4:fp = fopen("ded.h", "rb");
+			Search();
+			break;
+		
+
+		case 5:fp = fopen("ded.h", "wb");
+			RemoveFile();
+			break;
+
+		case 6:
+			return 0;
+			break;
+
+		default:
+			printf("\n\t\tError #6");
+		}
+
+		printf("\n\n\t\tEnter for exit (0) for continue (1) :> ");
+	} while (ch != 0);
+}
