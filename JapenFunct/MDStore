@@ -20,11 +20,9 @@ struct AllIformation {
 	int number;
 	char name[29];
 	char purch[29];
-
 	char addres[29];
 	long int summa;
 	char mobileTel[29];
-
 	struct date kove;
 
 }list;
