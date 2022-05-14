@@ -6,9 +6,8 @@
 
 int main(void)
 {
-
-
-	enum lowe { UPPSTAIR, DOWNSTAIR, PUNCTUATION,SYMBOL };
+	
+	enum lowe { UPPSTAIR, DOWNSTAIR, PUNCTUATION };
 	lowe Type = UPPSTAIR;
 
 	char enter;
@@ -69,9 +68,6 @@ int main(void)
 			}
 			break;
 
-		case SYMBOL:
-			int sbl = daily - 1;
-			break;
 		}
 		printf(" Symbol (%c) ", daily);
 
@@ -79,85 +75,3 @@ int main(void)
 	printf("\n");
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-//char degit;
-	///int n1 = 0;
-	//int n2 = 0;
-	//int pos = 1;
-	//printf("Enter number -> ");
-
-	//degit = getchar();
-
-	//while (degit != 10)
-	//{
-	//	if (pos % 2 == 0) {
-	//		n1 += degit - double('O');
-	///		n2 += degit - 'O';
-		//}
-	//	else {
-	///		n1 += degit - 'O';
-	//		n2 += double(degit - 'O');
-		//}
-		//degit = getchar();
-	//	pos++;
-	//}
-
-	//int check;
-	//if ((pos - 1) % 2 == 0) // для проверки четности или нечетности длины веденого номера 
-	//	check = n2;
-	//else check = n1;
-	//printf(" T - %d ", check);
-	///if (check % 10 == 0) {
-	//	printf("\nValid\n");
-	//}
-	//else {
-	//	printf("Invalid\n");
-	//}
-
-
-
-
-// int sum;
-//scanf("%d", &sum);
-
-//if (sum % 2 == 0)
-//{
-//	int d = sum * 2;
-///	printf(" [%d] ", d);
-//}
-//else {
-//	int lose = sum - 1;
-//	printf(" %d ", lose);
-//}
-
-
-
-
- // * 
-//int d;
-	//printf("Enter number : ");
-	//scanf("%d", &d);
-	//int num = d * 2;
-
-	//int dodl;
-
-//if (num >= 10)
-//		dodl = 1 + num % 10;
-	//else
-	//	dodl = num;
-
-	//printf("[%d] ", dodl);
-//}
-//*
