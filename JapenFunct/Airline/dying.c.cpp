@@ -111,7 +111,7 @@ void Reserve(int x)
 		return;
 
 	}
-	else if (x > 2) {
+	else if (x > 5) {
 		printf("\n\tAll seat full !");
 	}
 	else {
