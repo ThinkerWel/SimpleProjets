@@ -236,7 +236,7 @@ int main(void)
 		printf("\n\t1.Reserved");
 		printf("\n\t2.SmokingAreas");
 		printf("\n\t3.Display");
-		printf("\n\t5.Exit");
+		printf("\n\t4.Exit");
 
 		printf("\n\n\tEnter choise : ");
 		scanf("%d", &ch);
@@ -261,4 +261,3 @@ int main(void)
 
 	} while (ch != 4);
 }
-
