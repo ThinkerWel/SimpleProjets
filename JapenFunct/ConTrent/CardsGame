@@ -1,0 +1,139 @@
+void GameCards(void)
+{
+	int lenght = 0;
+	int lenght_2 = 0;
+	int count = 0;
+	int count_2 = 0;
+	int StrNumber = 0, StrNumber_2;
+
+	char p1[12] = { '\0' }, p2[12]={'\0'};
+	char DopAns[12] = { '\0' };
+	char answerd[12]={'\0'};
+	int i = 0, j = 0;
+
+	printf("\n\t\t :::::: Game Cards :::::: \n\n");
+	printf("\n\t\t Jack () Queen () King () Ace () Pikes  () Hearts\n");
+
+
+	printf("\n\tThe first player's move : ");
+	scanf("%s", p1);
+
+	printf("\n\tThe second player's move : ");
+	scanf("%s", p2);
+
+	lenght = strlen(p1);
+	lenght_2 = strlen(p2);
+
+	if (lenght > lenght_2) {
+		printf("\nWin fisrt  player ");
+		count++;
+		if (count == 0)
+		{
+			count--;
+		}
+	}
+
+	else if (lenght < lenght_2) {
+		printf("\nWin second player ");
+		count_2++;
+		if (count_2 == 0)
+		{
+			count_2--;
+		}
+	}
+	printf("\nP1 = %d\n P2 - %d \n", count, count_2);
+	printf("\n\t Loading .....  ");
+	getch();
+
+	printf("\n\t\t ~~~~~ Conitnue Game,cards similar ~~~~~ ");
+
+	printf("\n\tPlayer first/second you continue add cards, or end ? C/E :");
+	scanf("%s", answerd);
+
+	int n = strlen(answerd);
+
+		if (answerd[0] == 'C')
+		{
+			do{
+				if (count == 1) {
+
+					printf("\n\tMove Player_1 : ");
+					scanf("%s", p1);
+					printf("\n\tMove Player_2 : ");
+					scanf("%s", p2);
+
+
+					printf("\n\tDo wonna Someone to chache mine move?: 'Y'/'E'");
+					scanf("%s", DopAns);
+				}
+			} while (DopAns[0]== 'Y');
+
+
+			do {
+
+				if (count == 0) {
+
+
+					printf("\n\tMove Player_2 : ");
+					scanf("%s", p2);
+					printf("\n\tMove Player_1 :  ");
+					scanf("%s", p2);
+					printf("\n\tDo wonna Someone to chache mine move?: 'Y'/'E'");
+					scanf("%s",DopAns);
+
+				}
+			} while (DopAns[0] == 'Y');
+			
+
+			for (int i = 0; i < lenght; i++)
+				for(int j=0;j<lenght_2;j++)
+				StrNumber = p1[i] - 'O';
+			StrNumber_2 = p2[j] - 'O';
+
+			if (StrNumber < StrNumber_2)
+			{
+				printf("\n\tWin first player");
+				count++;
+			}
+			else if(StrNumber>StrNumber_2) {
+				printf("\n\tWin Second player ");
+				count_2++;
+			}
+
+			else if (strcmp(p1, p1) == 0) {
+				printf("\n\tNone");
+				count = 0;
+				count_2 = 0;
+			}
+
+			if (count < count_2)
+			{
+				printf("\n\tWon player second definitively");
+			}
+			else if (count > count_2)
+			{
+				printf("\n\tWon player first definitively");
+			}
+			
+			else if (count_2 == count)
+			{
+				printf("\n\t + - Draw - + ");
+			}
+			
+			else if (answerd[i] == 'E') {
+				printf("\n\tGood Bye ");
+			}
+
+			printf("\nP1 = %d\n P2 - %d ", count, count_2);
+		}
+		else {
+			printf("\n\tRepeat : ");
+			
+		}
+}
+
+int main()
+{
+	GameCards();
+
+}
