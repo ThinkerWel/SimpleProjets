@@ -50,8 +50,6 @@ void GameCards(void)
 	printf("\n\tPlayer first/second you continue add cards, or end ? C/E :");
 	scanf("%s", answerd);
 
-	int n = strlen(answerd);
-
 		if (answerd[0] == 'C')
 		{
 			do{
